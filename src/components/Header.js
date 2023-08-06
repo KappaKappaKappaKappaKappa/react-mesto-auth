@@ -2,14 +2,14 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "../images/logo.svg";
 import "./styles/Header.css";
 
-function Header() {
+function Header({ email }) {
   const location = useLocation();
   return (
     <header className="header">
       <img className="header__logo" src={logo} alt="Логотип" />
       {location.pathname === "/main" && (
         <div className="header__wrapper">
-          <p className="header__user-email">example@mail.ru</p>
+          <p className="header__user-email">{email}</p>
           <Link className="header__logout" to="/sign-in">
             Выйти
           </Link>

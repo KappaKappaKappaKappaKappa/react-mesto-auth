@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header.js";
 import Main from "./Main.js";
 import Footer from "./Footer.js";
@@ -17,7 +17,6 @@ import ProtectedRoute from "./ProtectedRoute";
 import * as auth from "../utils/auth.js";
 
 function App() {
-
   //Создание стейт-переменных открытия-закрытия popup'ов
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
@@ -30,6 +29,7 @@ function App() {
   const [isRegister, setIsRegister] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const [email, setEmail] = useState("");
 
   const navigate = useNavigate();
 
@@ -52,7 +52,7 @@ function App() {
   const [isPreloading, setIsPreloading] = useState(false);
 
   //Получение данных текущего пользователя
-  React.useEffect(() => {
+  useEffect(() => {
     api
       .getInfo()
       .then((userInfo) => {
@@ -64,7 +64,7 @@ function App() {
   }, []);
 
   //Получение карточек
-  React.useEffect(() => {
+  useEffect(() => {
     api
       .getCards()
       .then((cards) => {
@@ -74,6 +74,17 @@ function App() {
         console.log(error);
       });
   }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      auth.checkToken(token).then((data) => {
+        setEmail(data.data.email);
+        handleLoggedIn();
+        navigate("/main");
+      });
+    }
+  });
 
   //Функция обновления стейт-переменной выбранной карточки
   const handleCardClick = (card) => {
@@ -202,7 +213,7 @@ function App() {
     auth
       .handleRegisterUser(password, email)
       .then((res) => {
-        if(res){
+        if (res) {
           setIsRegister(true);
           handleInfoTooltipOpen();
           navigate("/sign-in");
@@ -211,17 +222,41 @@ function App() {
       .catch((error) => {
         console.log(error);
         setIsRegister(false);
-        handleInfoTooltipOpen()
+        handleInfoTooltipOpen();
       });
+  };
+
+  const handleLogin = (password, email) => {
+    auth
+      .handleLoginUser(password, email)
+      .then((data) => {
+        if (data.token) {
+          setEmail(email);
+          handleLoggedIn();
+          localStorage.setItem("token", data.token);
+          navigate("/main");
+        }
+      })
+      .catch((err) => {
+        handleInfoTooltipOpen();
+        console.log(err);
+      });
+  };
+
+  const handleLoggedIn = () => {
+    setIsLoggedIn(true);
   };
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="body">
-        <Header />
+        <Header email={email} />
         <Routes>
-          <Route path="/sign-up" element={<Register onRegister={handleRegister}/>} />
-          <Route path="/sign-in" element={<Login />} />
+          <Route
+            path="/sign-up"
+            element={<Register onRegister={handleRegister} />}
+          />
+          <Route path="/sign-in" element={<Login onLogin={handleLogin} />} />
 
           <Route
             path="*"
