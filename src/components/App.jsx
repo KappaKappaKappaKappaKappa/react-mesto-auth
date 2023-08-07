@@ -78,11 +78,16 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      auth.checkToken(token).then((data) => {
-        setEmail(data.data.email);
-        handleLoggedIn();
-        navigate("/main");
-      });
+      auth
+        .checkToken(token)
+        .then((data) => {
+          setEmail(data.data.email);
+          handleLoggedIn();
+          navigate("/main");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   }, []);
 
