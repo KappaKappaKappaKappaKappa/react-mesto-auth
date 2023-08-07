@@ -10,6 +10,7 @@ function InfoTooltip({ isConfirmed, isOpen, onClose }) {
             <img
               className="pop-up__tooltip-img"
               src={isConfirmed ? successRegister : errorRegister}
+              alt="Картинка подтверждения\ошибки регистрации"
             />
             <h2 className="pop-up__tooltip-title">
               {isConfirmed
