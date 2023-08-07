@@ -5,6 +5,10 @@
 /* HEADER */
 @import url("./blocks/header/header.css");
 @import url("./blocks/header/__logo/header__logo.css");
+@import url("./blocks/header/__logout/header__logout.css");
+@import url("./blocks/header/__user-email/header__user-email.css");
+@import url("./blocks/header/__wrapper/header__wrapper.css");
+@import url("./blocks/header/__auth-link/header__auth-link.css");
 
 /* CONTENT */
 @import url("./blocks/content/content.css");
@@ -70,5 +74,20 @@
 @import url("./blocks/pop-up/__container/_open/pop-up__container_open_submit.css");
 
 @import url("./blocks/pop-up/__form-title/_type/pop-up__form-title_type_delete.css");
+
+@import url("./blocks/pop-up/__tooltip-container/pop-up__tooltip-container.css");
+@import url("./blocks/pop-up/__tooltip-title/pop-up__tooltip-title.css");
+@import url("./blocks/pop-up/__tooltip-img/pop-up__tooltip-img.css");
+
+/* LOGIN */
+@import url("./blocks/login-register/login-register.css");
+@import url("./blocks/login-register/__form/login-register__form.css");
+@import url("./blocks/login-register/__input/login-register__input.css");
+@import url("./blocks/login-register/__submit-btn/login-register__submit-btn.css");
+@import url("./blocks/login-register/__title/login-register__title.css");
+
+/* REGISTER */
+@import url("./blocks/login-register/__already-login/login-register__already-login.css");
+@import url("./blocks/login-register/__already-title/login-register__already-title.css");
 
 @import url("./blocks/#root/root.css");

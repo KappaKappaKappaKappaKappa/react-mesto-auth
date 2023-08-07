@@ -1,0 +1,12 @@
+.login-register__title {
+    all: unset;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    margin-bottom: 50px;
+    padding-top: 23.75px;
+  }
+  

@@ -7,7 +7,7 @@ import api from "../utils/api.js";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup.jsx";
-import AddPlacePopup from "./AddPlacePopup.js";
+import AddPlacePopup from "./AddPlacePopup.jsx";
 import ConfirmDeletePopup from "./ConfirmDeletePopup.jsx";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Login from "./Login";

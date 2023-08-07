@@ -1,6 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
 import logo from "../images/logo.svg";
-import "./styles/Header.css";
 
 function Header({ email, onLogout }) {
   const location = useLocation();
