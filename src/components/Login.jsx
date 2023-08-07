@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 function Login({ onLogin }) {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const emailInputValue = (e) => {
     setEmail(e.target.value);
@@ -14,9 +14,6 @@ function Login({ onLogin }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!email || !password) {
-      return;
-    }
     onLogin(password, email);
   };
 
@@ -27,14 +24,16 @@ function Login({ onLogin }) {
         <input
           className="login-register__input"
           placeholder="E-mail"
-          type="e-mail"
+          type="email"
           onChange={emailInputValue}
+          required
         />
         <input
           className="login-register__input"
           placeholder="Пароль"
           type="password"
           onChange={passwordInputValue}
+          required
         />
         <button className="login-register__submit-btn">Войти</button>
       </form>

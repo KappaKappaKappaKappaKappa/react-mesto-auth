@@ -33,6 +33,9 @@ function App() {
 
   const navigate = useNavigate();
 
+  const successTextInfoTooltip = "Вы успешно зарегистрировались!";
+  const errorTextInfoTooltip = "Что-то пошло не так! Попробуйте ещё раз.";
+
   //Создание стейта текущего пользователя
   const [currentUser, setCurrentUser] = useState({
     name: "Загружаем...",
@@ -329,6 +332,8 @@ function App() {
           isConfirmed={isRegister}
           isOpen={isInfoTooltipOpen}
           onClose={closeAllPopups}
+          successText={successTextInfoTooltip}
+          errorText={errorTextInfoTooltip}
         />
 
         <Footer />

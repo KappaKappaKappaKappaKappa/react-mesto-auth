@@ -25,13 +25,15 @@ function Register({ onRegister }) {
           className="login-register__input"
           placeholder="E-mail"
           onChange={emailInputValue}
-          type="e-mail"
+          type="email"
+          required
         />
         <input
           className="login-register__input"
           placeholder="Пароль"
           onChange={passwordInputValue}
           type="password"
+          required
         />
         <button className="login-register__submit-btn">
           Зарегистрироваться
