@@ -4,12 +4,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 import { useFormValidation } from "../hooks/useFormValidation";
 
-function EditProfilePopup({
-  isOpen,
-  onClose,
-  onUpdateUser,
-  isPreloading,
-}) {
+function EditProfilePopup({ isOpen, onClose, onUpdateUser, isPreloading }) {
   const { values, errors, isValid, handleChange, resetForm } =
     useFormValidation({});
 
@@ -53,7 +48,7 @@ function EditProfilePopup({
         maxLength="40"
         placeholder="Укажите имя"
         onChange={handleChange}
-        defaultValue={values.name}
+        value={values.name || ""}
       />
       <span
         className={"pop-up__form-input-error pop-up__form-name-input-error"}
@@ -74,7 +69,7 @@ function EditProfilePopup({
         maxLength="200"
         placeholder="Укажите чем вы занимаетесь"
         onChange={handleChange}
-        defaultValue={values.about}
+        value={values.about || ""}
       />
       <span className="pop-up__form-input-error pop-up__form-profession-input-error">
         {errors.about}

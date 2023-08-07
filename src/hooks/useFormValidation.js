@@ -8,8 +8,8 @@ export function useFormValidation() {
 
   //Обработчик изменений в полях данных
   const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
+    const { name } = e.target;
+    const { value } = e.target;
 
     setValues({
       ...values,

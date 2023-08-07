@@ -47,6 +47,7 @@ function AddPlacePopup({
         minLength="2"
         maxLength="30"
         onChange={handleChange}
+        value={values.title || ''}
       />
       <span className="pop-up__form-input-error pop-up__form-place-input-error">
         {errors.title}
@@ -63,6 +64,7 @@ function AddPlacePopup({
         placeholder="Ссылка на картинку"
         required
         onChange={handleChange}
+        value={values.link || ''}
       />
       <span className="pop-up__form-input-error pop-up__form-link-input-error">
         {errors.link}

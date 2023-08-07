@@ -40,6 +40,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isPreloading }) {
         placeholder="Ссылка на новый аватар"
         required
         onChange={handleChange}
+        value={values.avatar || ''}
       />
       <span className="pop-up__form-input-error pop-up__form-avatar-url-input-error">
         {errors.avatar}
