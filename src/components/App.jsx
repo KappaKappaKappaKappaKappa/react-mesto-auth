@@ -51,29 +51,28 @@ function App() {
   //Создание стейта индикатора загрузки данных
   const [isPreloading, setIsPreloading] = useState(false);
 
-  //Получение данных текущего пользователя
+  //Получение данных текущего пользователя и получение карточек
   useEffect(() => {
-    api
-      .getInfo()
-      .then((userInfo) => {
-        setCurrentUser(userInfo);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    if (isLoggedIn) {
+      api
+        .getInfo()
+        .then((userInfo) => {
+          setCurrentUser(userInfo);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
-  //Получение карточек
-  useEffect(() => {
-    api
-      .getCards()
-      .then((cards) => {
-        setCards(cards);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+      api
+        .getCards()
+        .then((cards) => {
+          setCards(cards);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [isLoggedIn]);
 
   //Проверка токена при загрузке страницы
   useEffect(() => {
