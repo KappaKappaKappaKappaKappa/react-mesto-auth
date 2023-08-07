@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "../images/logo.svg";
 import "./styles/Header.css";
 
-function Header({ email }) {
+function Header({ email, onLogout }) {
   const location = useLocation();
   return (
     <header className="header">
@@ -10,7 +10,7 @@ function Header({ email }) {
       {location.pathname === "/main" && (
         <div className="header__wrapper">
           <p className="header__user-email">{email}</p>
-          <Link className="header__logout" to="/sign-in">
+          <Link className="header__logout" to="/sign-in" onClick={onLogout}>
             Выйти
           </Link>
         </div>

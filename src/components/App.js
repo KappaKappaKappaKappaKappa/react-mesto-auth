@@ -205,10 +205,12 @@ function App() {
       });
   };
 
+  //Функция открытия InfoTooltip popup
   const handleInfoTooltipOpen = () => {
     setIsInfoTooltipOpen(true);
   };
 
+  //Обработчик регистрации пользователя
   const handleRegister = (password, email) => {
     auth
       .handleRegisterUser(password, email)
@@ -226,6 +228,7 @@ function App() {
       });
   };
 
+  //Обработчик авторизации пользователя
   const handleLogin = (password, email) => {
     auth
       .handleLoginUser(password, email)
@@ -243,14 +246,22 @@ function App() {
       });
   };
 
+  //Функция изменения стейт переменной статуса логина пользователя
   const handleLoggedIn = () => {
     setIsLoggedIn(true);
+  };
+
+  //Функция выхода из системы
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem("token");
+    navigate("/sign-in");
   };
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="body">
-        <Header email={email} />
+        <Header email={email} onLogout={handleLogout} />
         <Routes>
           <Route
             path="/sign-up"
