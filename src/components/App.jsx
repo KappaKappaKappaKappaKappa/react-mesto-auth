@@ -75,6 +75,7 @@ function App() {
       });
   }, []);
 
+  //Проверка токена при загрузке страницы
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -84,7 +85,7 @@ function App() {
         navigate("/main");
       });
     }
-  });
+  }, []);
 
   //Функция обновления стейт-переменной выбранной карточки
   const handleCardClick = (card) => {
