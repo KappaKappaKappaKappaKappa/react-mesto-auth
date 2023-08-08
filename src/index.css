@@ -83,8 +83,11 @@
 @import url("./blocks/login-register/login-register.css");
 @import url("./blocks/login-register/__form/login-register__form.css");
 @import url("./blocks/login-register/__input/login-register__input.css");
+@import url("./blocks/login-register/__input/_type/login-register__input_type_error.css");
 @import url("./blocks/login-register/__submit-btn/login-register__submit-btn.css");
 @import url("./blocks/login-register/__title/login-register__title.css");
+@import url("./blocks/login-register/__input-error/login-register__input-error.css");
+@import url("./blocks/login-register/__submit-btn/_inactive/login-register__submit-btn_inactive.css");
 
 /* REGISTER */
 @import url("./blocks/login-register/__already-login/login-register__already-login.css");

@@ -51,7 +51,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser, isPreloading }) {
         value={values.name || ""}
       />
       <span
-        className={"pop-up__form-input-error pop-up__form-name-input-error"}
+        className={"pop-up__form-input-error"}
       >
         {errors.name}
       </span>
@@ -71,7 +71,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser, isPreloading }) {
         onChange={handleChange}
         value={values.about || ""}
       />
-      <span className="pop-up__form-input-error pop-up__form-profession-input-error">
+      <span className="pop-up__form-input-error">
         {errors.about}
       </span>
     </PopupWithForm>

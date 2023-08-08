@@ -1,41 +1,65 @@
-import React, { useState } from "react";
+import { useEffect } from "react";
+import { useFormValidation } from "../hooks/useFormValidation";
 
 function Login({ onLogin }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const emailInputValue = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const passwordInputValue = (e) => {
-    setPassword(e.target.value);
-  };
+  const { values, errors, isValid, handleChange, resetForm } =
+    useFormValidation({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onLogin(password, email);
+    onLogin(values.password, values.email);
   };
+
+  useEffect(() => {
+    resetForm();
+  }, [resetForm]);
 
   return (
     <section className="login-register">
       <h2 className="login-register__title">Вход</h2>
       <form className="login-register__form" onSubmit={handleSubmit}>
         <input
-          className="login-register__input"
+          className={
+            errors.email
+              ? "login-register__input login-register__input_type_error"
+              : "login-register__input"
+          }
+          name="email"
           placeholder="E-mail"
           type="email"
-          onChange={emailInputValue}
+          onChange={handleChange}
           required
+          maxLength={40}
+          value={values.email || ""}
         />
+        <span className="login-register__input-error">{errors.email}</span>
         <input
-          className="login-register__input"
+          className={
+            errors.password
+              ? "login-register__input login-register__input_type_error"
+              : "login-register__input"
+          }
+          name="password"
           placeholder="Пароль"
           type="password"
-          onChange={passwordInputValue}
+          onChange={handleChange}
           required
+          minLength={8}
+          maxLength={40}
+          value={values.password || ""}
         />
-        <button className="login-register__submit-btn">Войти</button>
+        <span className="login-register__input-error">{errors.password}</span>
+        <button
+          className={
+            isValid
+              ? "login-register__submit-btn"
+              : "login-register__submit-btn login-register__submit-btn_inactive"
+          }
+          disabled={!isValid}
+          type="submit"
+        >
+          Войти
+        </button>
       </form>
     </section>
   );

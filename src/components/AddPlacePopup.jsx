@@ -49,7 +49,7 @@ function AddPlacePopup({
         onChange={handleChange}
         value={values.title || ''}
       />
-      <span className="pop-up__form-input-error pop-up__form-place-input-error">
+      <span className="pop-up__form-input-error">
         {errors.title}
       </span>
       <input
@@ -66,7 +66,7 @@ function AddPlacePopup({
         onChange={handleChange}
         value={values.link || ''}
       />
-      <span className="pop-up__form-input-error pop-up__form-link-input-error">
+      <span className="pop-up__form-input-error">
         {errors.link}
       </span>
     </PopupWithForm>

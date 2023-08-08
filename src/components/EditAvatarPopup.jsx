@@ -42,7 +42,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isPreloading }) {
         onChange={handleChange}
         value={values.avatar || ''}
       />
-      <span className="pop-up__form-input-error pop-up__form-avatar-url-input-error">
+      <span className="pop-up__form-input-error">
         {errors.avatar}
       </span>
     </PopupWithForm>
