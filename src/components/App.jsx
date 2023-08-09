@@ -271,6 +271,7 @@ function App() {
     setIsConfirmLogoutPopup(false);
   };
 
+  //Функция обработчик нажатия на кнопку выхода
   const handleClickLogoutBtn = () => {
     setIsConfirmLogoutPopup(true);
   };
