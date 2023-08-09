@@ -15,6 +15,7 @@ import Register from "./Register";
 import InfoTooltip from "./InfoTooltip";
 import ProtectedRoute from "./ProtectedRoute";
 import * as auth from "../utils/auth.js";
+import ConfirmLogoutPopup from "./ConfirmLogoutPopup";
 
 function App() {
   //Создание стейт-переменных открытия-закрытия popup'ов
@@ -23,6 +24,7 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isConfirmDeletePopup, setIsConfirmDeletePopup] = useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
+  const [isConfirmLogoutPopup, setIsConfirmLogoutPopup] = useState(false);
 
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
 
@@ -138,6 +140,7 @@ function App() {
     setIsImagePopupOpen(false);
     setIsInfoTooltipOpen(false);
     setSelectedCard(null);
+    setIsConfirmLogoutPopup(false);
   };
   //Функция отправки и обновления данных пользователя
   const handleUpdateUser = (newUserData) => {
@@ -264,12 +267,20 @@ function App() {
     setIsLoggedIn(false);
     localStorage.removeItem("token");
     navigate("/sign-in");
+    setIsConfirmLogoutPopup(false);
+  };
+
+  const handleClickLogoutBtn = () => {
+    setIsConfirmLogoutPopup(true);
   };
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="body">
-        <Header email={email} onLogout={handleLogout} />
+        <Header
+          email={email}
+          onClickLogout={handleClickLogoutBtn}
+        />
         <Routes>
           <Route
             path="/sign-up"
@@ -320,6 +331,11 @@ function App() {
           onSubmit={handleCardDelete}
           card={selectedCard}
           isPreloading={isPreloading}
+        />
+        <ConfirmLogoutPopup
+          isOpen={isConfirmLogoutPopup}
+          onClose={closeAllPopups}
+          onSubmit={handleLogout}
         />
 
         <ImagePopup

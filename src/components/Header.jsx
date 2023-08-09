@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import logo from "../images/logo.svg";
 
-function Header({ email, onLogout }) {
+function Header({ email, onClickLogout }) {
   const location = useLocation();
   return (
     <header className="header">
@@ -9,9 +9,9 @@ function Header({ email, onLogout }) {
       {location.pathname === "/main" && (
         <div className="header__wrapper">
           <p className="header__user-email">{email}</p>
-          <Link className="header__logout" to="/sign-in" onClick={onLogout}>
+          <p className="header__logout" onClick={onClickLogout}>
             Выйти
-          </Link>
+          </p>
         </div>
       )}
       {location.pathname === "/sign-in" && (
