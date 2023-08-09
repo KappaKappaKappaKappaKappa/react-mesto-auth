@@ -252,6 +252,7 @@ function App() {
         }
       })
       .catch((err) => {
+        setIsRegister(false);
         handleInfoTooltipOpen();
         console.log(err);
       });
@@ -277,10 +278,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="body">
-        <Header
-          email={email}
-          onClickLogout={handleClickLogoutBtn}
-        />
+        <Header email={email} onClickLogout={handleClickLogoutBtn} />
         <Routes>
           <Route
             path="/sign-up"
