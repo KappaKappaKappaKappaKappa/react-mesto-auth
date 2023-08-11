@@ -33,6 +33,9 @@ function App() {
 
   const [email, setEmail] = useState("");
 
+  //Стейт переменная отслеживания открытия/закрытия бургер-меню
+  const [isClickBurgerMenu, setIsClickBurgerMenu] = useState(false);
+
   const navigate = useNavigate();
 
   const successTextInfoTooltip = "Вы успешно зарегистрировались!";
@@ -276,10 +279,27 @@ function App() {
     setIsConfirmLogoutPopup(true);
   };
 
+  //Функция открытия бургер-меню
+  const handleClickMenuBtn = () => {
+    setIsClickBurgerMenu(true);
+  };
+
+  //Функция закрытия бургер-меню
+  const handleCloseMenu = () => {
+    setIsClickBurgerMenu(false);
+  };
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="body">
-        <Header email={email} onClickLogout={handleClickLogoutBtn} />
+        <Header
+          email={email}
+          onClickLogout={handleClickLogoutBtn}
+          isLoggedIn={isLoggedIn}
+          isOpen={isClickBurgerMenu}
+          onClickMenuBtn={handleClickMenuBtn}
+          onCloseMenu={handleCloseMenu}
+        />
         <Routes>
           <Route
             path="/sign-up"
@@ -335,6 +355,7 @@ function App() {
           isOpen={isConfirmLogoutPopup}
           onClose={closeAllPopups}
           onSubmit={handleLogout}
+          onCloseMenu={handleCloseMenu}
         />
 
         <ImagePopup

@@ -7,6 +7,13 @@
     line-height: 1.375rem;
     align-self: center;
   }
+
+  @media all and (min-width: 320px) and (max-width: 767px) {
+    .header__auth-link{
+      margin-right: 30px;
+      font-size: 0.875rem;
+    }
+  }
   
   .header__auth-link:hover {
     cursor: pointer;

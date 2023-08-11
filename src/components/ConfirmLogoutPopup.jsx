@@ -1,9 +1,10 @@
 import PopupWithForm from "./PopupWithForm";
 
-function ConfirmLogoutPopup({ isOpen, onClose, onSubmit }) {
+function ConfirmLogoutPopup({ isOpen, onClose, onSubmit, onCloseMenu }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit();
+    onCloseMenu();
   };
 
   return (
