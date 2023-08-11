@@ -50,9 +50,9 @@ function Header({
         {location.pathname === "/main" && (
           <div className="header__wrapper">
             <p className="header__user-email">{email}</p>
-            <p className="header__logout" onClick={onClickLogout}>
+            <button className="header__logout" onClick={onClickLogout}>
               Выйти
-            </p>
+            </button>
           </div>
         )}
 

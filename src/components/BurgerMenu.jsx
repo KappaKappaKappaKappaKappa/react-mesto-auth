@@ -3,9 +3,9 @@ function BurgerMenu({ email, onClickLogout, isOpen }) {
     <div className={`burger-menu ${isOpen ? "burger-menu_active" : ""}`}>
       <div className="burger-menu__container">
         <p className="burger-menu__email">{email}</p>
-        <p className="burger-menu__link" onClick={onClickLogout}>
+        <button className="burger-menu__link" onClick={onClickLogout}>
           Выйти
-        </p>
+        </button>
       </div>
     </div>
   );
